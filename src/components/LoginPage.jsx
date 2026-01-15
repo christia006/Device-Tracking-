@@ -23,7 +23,12 @@ const LoginPage = ({ onLoginSuccess }) => {
 
       onLoginSuccess();
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+     setError(
+  err.response?.data?.detail ||
+  err.response?.data?.message ||
+  'Login failed. Please check your credentials.'
+);
+
     } finally {
       setLoading(false);
     }
@@ -81,7 +86,8 @@ const LoginPage = ({ onLoginSuccess }) => {
         </form>
 
         <div className="mt-4 text-center" style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-          <p>Default credentials: ADMIN123 / ADMIN123</p>
+         <p>Default credentials: admin / admin123</p>
+
         </div>
       </div>
     </div>
